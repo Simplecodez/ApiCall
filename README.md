@@ -6,12 +6,12 @@ as soon as a change is made. It helped facilitate the development process.
 It comprises of app.js, controller.js, promisify.js. The app.js is the entry point of this application,
 controller.js handles the request events while promisify.js creates a '''Promise''' for the '''https.get()''' method
 which takes some time to retrieve the data from '''https://jsonplaceholder.typicode.com/comments'''. The data is then consumed
-using async - await so that the '''Event-Loop''' is not blocked. The '''then()''' can also be used to consume the '''Promise'''.
+using "async - await" so that the '''Event-Loop''' is not blocked. The '''then()''' can also be used to consume the '''Promise'''.
 
 ## Running the application.
-To run this application, simply type: '''node app''' or
-Install nodemon by typing: '''npm i nodemon''' then type '''npm start'''.
-All should be done on the command line.
+To run this application, simply type: '''node app''' or '''npm start''' as I included the "node_modules" folder and configured it as required.
+
+All these commands should be done on the command line.
 
 ## Making Queries
 Once the server is started, head to your browser, preferrably Postman for better view of the API's results.
