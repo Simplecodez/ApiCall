@@ -11,7 +11,7 @@ using "async - await" so that the '''Event-Loop''' is not blocked. The '''then()
 ## Running the application.
 To run this application, simply type: '''node app''' or '''npm start''' as I included the "node_modules" folder and configured it as required.
 
-All these commands should be done on the command line.
+All these commands should be done on the command line and on the root folder containing these files.
 
 ## Making Queries
 Once the server is started, head to your browser, preferrably Postman for better view of the API's results.
