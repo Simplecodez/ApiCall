@@ -9,7 +9,7 @@ which takes some time to retrieve the data from '''https://jsonplaceholder.typic
 using "async - await" so that the '''Event-Loop''' is not blocked. The '''then()''' can also be used to consume the '''Promise'''.
 
 ## Running the application.
-To run this application, simply type: '''node app''' or '''npm start''' as I included the "node_modules" folder and configured it as required.
+To run this application, simply type: '''node app''' or '''npm start''' as I included the "node_modules" folder and configured the package.json file as required.
 
 All these commands should be done on the command line and on the root folder containing these files.
 
