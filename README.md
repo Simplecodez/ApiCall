@@ -19,3 +19,7 @@ To get the comments, simply enter this URL: '''http://localhost:8000/api/comment
 To get the posts, simply enter this URL: '''http://localhost:8000/api/posts''' in your browser and hit enter.
 You could add a query to the URL to limit the number of comments or posts retrieved as shown:
 '''http://localhost:8000/api/comments?limit=9''' or '''http://localhost:8000/api/posts?limit=9''' depending on the resource.
+
+## Note
+When running the code on a Linux based system, you need to modify the file permission to 711 so as to grant the user the execute permission.
+So first run "chmod 711 app.js" before running this: '''npm start'''.
