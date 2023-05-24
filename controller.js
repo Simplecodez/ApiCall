@@ -1,34 +1,31 @@
 // require
-const url = require('url');
-const getDataPro = require('./promisify');
-
+const url = require("url");
+const result = require("./app");
 // Handler function to avoid repetition
 const handler = async (query, res, resource) => {
   // Using a try-catch block to effectively handle errors incase the occur when trying to retrieve data.
   //then().catch() method can also be used
-  try {
-    //we await the Promise
-    //And handle the result accordingly.
-    const result = await getDataPro();
+
+  if (Array.isArray(result)) {
     if (Object.keys(query).length === 0) {
       res.writeHead(200, {
-        'Content-type': 'application/json'
+        "Content-type": "application/json",
       });
       return res.end(
         JSON.stringify({
-          status: 'success',
+          status: "success",
           results: result.length,
-          data: { [resource]: result }
+          data: { [resource]: result },
         })
       );
     }
 
     if (query.limit * 1 > result.length) {
       res.writeHead(404, {
-        'Content-type': 'application/json'
+        "Content-type": "application/json",
       });
       return res.end(
-        JSON.stringify({ status: 'fail', message: `${resource} not found!` })
+        JSON.stringify({ status: "fail", message: `${resource} not found!` })
       );
     }
 
@@ -39,39 +36,39 @@ const handler = async (query, res, resource) => {
     }
 
     const data = JSON.stringify({
-      status: 'success',
+      status: "success",
       results: comments.length,
-      data: { [resource]: comments }
+      data: { [resource]: comments },
     });
 
     res.writeHead(200, {
-      'Content-type': 'application/json'
+      "Content-type": "application/json",
     });
     res.end(data);
-  } catch (err) {
+  } else {
     res.writeHead(500, {
-      'Content-type': 'text/html'
+      "Content-type": "text/html",
     });
-    res.end(err);
+    res.end(result);
   }
 };
 
-module.exports = async (req, res) => {
+module.exports = (req, res) => {
   const { query, pathname } = url.parse(req.url, true);
   //Handler for '/api/posts'
-  if (pathname === '/api/comments' && req.method === 'GET') {
-    handler(query, res, 'comments');
+  if (pathname === "/api/comments" && req.method === "GET") {
+    handler(query, res, "comments");
     //Handler for '/api/posts'
-  } else if (pathname === '/api/posts' && req.method === 'GET') {
-    handler(query, res, 'posts');
+  } else if (pathname === "/api/posts" && req.method === "GET") {
+    handler(query, res, "posts");
     //Handler for '/api/posts'
   } else {
-    res.writeHead(404, { 'Content-type': 'application/json' });
+    res.writeHead(404, { "Content-type": "application/json" });
     res.end(
       JSON.stringify({
-        status: 'fail',
+        status: "fail",
         message:
-          'Sorry, the resource you are looking for, can not be found on this server!'
+          "Sorry, the resource you are looking for, can not be found on this server!",
       })
     );
   }
